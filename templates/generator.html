@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h1>AI Outfit Generator</h1>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">
+        Tell us how you feel and where you're going, and let AI build you a perfectly color-matched outfit!
+    </p>
+
+    <form action="/generate" method="POST" style="max-width: 600px; margin: 0 auto;">
+        <div class="form-group">
+            <label for="mood">Select Mood</label>
+            <select name="mood" id="mood" required>
+                <option value="happy" {% if search_mood=='happy' %}selected{% endif %}>Happy</option>
+                <option value="confident" {% if search_mood=='confident' %}selected{% endif %}>Confident</option>
+                <option value="chill" {% if search_mood=='chill' %}selected{% endif %}>Chill</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="occasion">Select Occasion</label>
+            <select name="occasion" id="occasion" required>
+                <option value="casual" {% if search_occasion=='casual' %}selected{% endif %}>Casual</option>
+                <option value="formal" {% if search_occasion=='formal' %}selected{% endif %}>Formal</option>
+                <option value="party" {% if search_occasion=='party' %}selected{% endif %}>Party</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn">Generate AI Outfit ✨</button>
+    </form>
+</div>
+
+{% if top and bottom %}
+<div class="card" style="margin-top: 2rem;">
+    <h2>AI Recommended Outfit</h2>
+    <div class="match-display">
+        <div class="outfit-piece">
+            <img src="{{ url_for('static', filename=top.image) }}" alt="Top">
+            <h3 style="text-transform: capitalize;">{{ top.color }} {{ top.type }}</h3>
+            <span class="badge">{{ top.mood }}</span>
+            <span class="badge">{{ top.occasion }}</span>
+        </div>
+
+        <div class="plus-sign">+</div>
+
+        <div class="outfit-piece">
+            <img src="{{ url_for('static', filename=bottom.image) }}" alt="Bottom">
+            <h3 style="text-transform: capitalize;">{{ bottom.color }} {{ bottom.type }}</h3>
+            <span class="badge">{{ bottom.mood }}</span>
+            <span class="badge">{{ bottom.occasion }}</span>
+        </div>
+    </div>
+</div>
+{% elif top is defined and top is none %}
+<div class="card" style="text-align: center;">
+    <h2>No exact match found</h2>
+    <p>Try different selections or add more items to your wardrobe.</p>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard - AI Wardrobe</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="menu-btn" onclick="openSidebar()">☰</div>
+        <h2>AI Wardrobe Dashboard</h2>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <a onclick="showCalendar()">📅 Calendar</a>
+        <a onclick="showCategory('Dresses')">👗 Dresses</a>
+        <a onclick="showCategory('Shirts')">👚 Shirts</a>
+        <a onclick="showCategory('Pants')">👖 Pants</a>
+        <a onclick="showLiked()">❤️ Liked</a>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div class="main">
+
+        <h3>Describe Your Outfit Idea</h3>
+        <textarea id="descriptionBox" placeholder="Describe your mood, event, style..."></textarea>
+
+        <h3>Upload an Item for Matching</h3>
+
+        <form action="/match" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" id="imageUpload" required>
+            <button type="submit">Find Match</button>
+        </form>
+
+        <br><br>
+        <form action="/generate" method="POST">
+
+            <h3>Select Mood</h3>
+            <select name="mood">
+                <option value="happy">Happy</option>
+                <option value="confident">Confident</option>
+                <option value="chill">Chill</option>
+            </select>
+
+            <br><br>
+
+            <h3>Select Occasion</h3>
+            <select name="occasion">
+                <option value="casual">Casual</option>
+                <option value="formal">Formal</option>
+                <option value="party">Party</option>
+            </select>
+
+            <br><br>
+
+            <button type="submit">Generate AI Outfit</button>
+
+        </form>
+
+        {% if top and bottom %}
+        <h3>AI Recommended Outfit</h3>
+
+        <img src="{{ url_for('static', filename=top.image) }}" width="200">
+        <img src="{{ url_for('static', filename=bottom.image) }}" width="200">
+
+        {% elif top is not none %}
+        <p>No matching bottom found.</p>
+        {% endif %}
+
+        {% if selected %}
+        <h3>Selected:</h3>
+        <img src="{{ url_for('static', filename=selected.image) }}" width="200">
+        {% endif %}
+
+        {% if match %}
+        <h3>AI Recommended Match:</h3>
+        <img src="{{ url_for('static', filename=match.image) }}" width="200">
+        {% endif %}
+
+    </div>
+
+    <script>
+
+        function openSidebar() {
+            var sidebar = document.getElementById("sidebar");
+
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-250px";  // Hide
+            } else {
+                sidebar.style.left = "0px";     // Show
+            }
+        }
+
+
+
+    </script>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

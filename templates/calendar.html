@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h1>Outfit Calendar: {{ month_name }} {{ current_year }}</h1>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">
+        Plan your outfits ahead for your upcoming events this month. Click on any event to see details!
+    </p>
+
+    <!-- Calendar Layout -->
+    <div class="calendar-wrapper">
+        <!-- Calendar Header: Days of the week -->
+        <div class="calendar" style="background: none; border: none; margin-bottom: 0.5rem;">
+            <div class="calendar-header">Sun</div>
+            <div class="calendar-header">Mon</div>
+            <div class="calendar-header">Tue</div>
+            <div class="calendar-header">Wed</div>
+            <div class="calendar-header">Thu</div>
+            <div class="calendar-header">Fri</div>
+            <div class="calendar-header">Sat</div>
+        </div>
+
+        <!-- Dynamic Calendar Grid -->
+        <div class="calendar">
+            {% for week in month_days %}
+            {% for day in week %}
+            {% if day == 0 %}
+            <!-- Empty day cell -->
+            <div class="calendar-day" style="background-color: #f8fafc;"></div>
+            {% else %}
+            <div class="calendar-day" id="day-cell-{{ day }}">
+                <span class="day-number">{{ day }}</span>
+
+                <!-- Build Date String YYYY-MM-DD -->
+                {% set month_str = '%02d' % current_month %}
+                {% set day_str = '%02d' % day %}
+                {% set date_key = current_year | string ~ '-' ~ month_str ~ '-' ~ day_str %}
+
+                {% if date_key in events %}
+                <a href="/event/{{ date_key }}" class="event-badge" style="display: block; text-decoration: none;">
+                    {{ events[date_key].title }}
+                </a>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="grid-container" style="align-items: flex-start;">
+    <!-- Add new event form -->
+    <div class="card">
+        <h2>Add Event</h2>
+        <form action="/add_event" method="POST">
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" name="date" id="date" required
+                    style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+            </div>
+
+            <div class="form-group">
+                <label for="title">Event Title</label>
+                <input type="text" name="title" id="title" placeholder="e.g. Date Night" required
+                    style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="description">Event Description</label>
+                <textarea name="description" id="description" rows="3" placeholder="Notes about the event..."
+                    style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-family: inherit;"></textarea>
+            </div>
+
+            <button type="submit" class="btn">Add to Calendar 📅</button>
+        </form>
+    </div>
+
+    {% if active_event %}
+    <!-- Event details display box for active event -->
+    <div class="card" id="event-details-card" style="background-color: #fdf2f8; border: 1px solid #fbcfe8;">
+        <h2 id="detail-title" style="color: #be185d;">{{ active_event.title }}</h2>
+        <p id="detail-desc" style="margin-bottom: 1.5rem;">{{ active_event.description }}</p>
+
+        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Suggested Outfit</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Automatically matched for {{
+            active_event.occasion }} ({{ active_event.mood }}) based on the event details!</p>
+
+        {% if active_event.top and active_event.bottom %}
+        <div class="match-display" style="gap: 1rem;">
+            <div class="outfit-piece" style="max-width: 200px;">
+                <img src="{{ url_for('static', filename=active_event.top.image) }}" alt="Top" style="height: 250px;">
+                <h3 style="text-transform: capitalize; font-size: 1rem; margin-top: 0.5rem; color: var(--text-main);">{{
+                    active_event.top.color }} {{ active_event.top.type }}</h3>
+            </div>
+            <div class="plus-sign" style="font-size: 2rem;">+</div>
+            <div class="outfit-piece" style="max-width: 200px;">
+                <img src="{{ url_for('static', filename=active_event.bottom.image) }}" alt="Bottom"
+                    style="height: 250px;">
+                <h3 style="text-transform: capitalize; font-size: 1rem; margin-top: 0.5rem; color: var(--text-main);">{{
+                    active_event.bottom.color }} {{ active_event.bottom.type }}</h3>
+            </div>
+        </div>
+        {% else %}
+        <p style="color: red; text-align: center; font-weight: bold; margin-top: 2rem;">No matching outfit could be
+            found in the current wardrobe for this occasion.</p>
+        {% endif %}
+    </div>
+    <script>
+        // Scroll down smoothly so mobile users can see the active event
+        window.onload = function () {
+            var el = document.getElementById('event-details-card');
+            if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'end' }); }
+        };
+    </script>
+    {% endif %}
+    {% endblock %}

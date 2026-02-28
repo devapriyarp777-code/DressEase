@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h1>Liked Outfits ❤️</h1>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">
+        Your favorite saved outfits. Ready for the next occasion!
+    </p>
+
+    <div class="grid-container">
+        {% for outfit in liked_outfits %}
+        <div class="grid-item" style="padding: 1rem;">
+            <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                <img src="{{ url_for('static', filename=outfit.top) }}" alt="Top"
+                    style="height: 150px; width: 45%; border-radius: 0.5rem; object-fit: cover;">
+                <img src="{{ url_for('static', filename=outfit.bottom) }}" alt="Bottom"
+                    style="height: 150px; width: 45%; border-radius: 0.5rem; object-fit: cover;">
+            </div>
+            <div class="grid-item-info">
+                <p>Saved Combination #{{ loop.index }}</p>
+                <button class="btn" style="margin-top: 1rem; background-color: #ef4444;"
+                    onclick="alert('Removal feature coming soon in full backend DB update!')">Remove</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

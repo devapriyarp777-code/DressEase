@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+        <h1 style="margin: 0;">My Wardrobe</h1>
+        <form action="/upload_wardrobe" method="POST" enctype="multipart/form-data" id="wardrobe-upload-form"
+            style="margin: 0;">
+            <label for="wardrobe_image_upload"
+                style="cursor: pointer; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background-color: var(--primary-color); color: white; transition: background-color 0.3s;"
+                title="Upload and Auto-Tag Item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+            </label>
+            <input type="file" name="wardrobe_image" id="wardrobe_image_upload" accept="image/*" style="display: none;"
+                onchange="document.getElementById('wardrobe-upload-form').submit();">
+        </form>
+    </div>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">
+        View all the clothing items currently stored in your virtual wardrobe.
+        Loaded dynamically from your files.
+    </p>
+
+    {% if images %}
+    <div class="grid-container">
+        {% for image_path in images %}
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename=image_path) }}" alt="Wardrobe Item">
+            <div class="grid-item-info">
+                <!-- Get just the filename cleanly -->
+                <p style="color: var(--text-main); font-weight: 500; font-size: 0.875rem;">
+                    {{ image_path.split('/')[-1] }}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div style="text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
+        <h3>No wardrobe items found!</h3>
+        <p>Upload images to the <code>static/wardrobe/</code> folder to see them here.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

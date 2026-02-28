@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DressEase - Virtual Wardrobe</title>
+    <!-- Modern Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">DressEase ✨</a>
+            <ul class="nav-links">
+                <li><a href="/generator">AI Outfit Generator</a></li>
+                <li><a href="/match">Find a Match</a></li>
+                <li><a href="/calendar">Calendar</a></li>
+                <li><a href="/liked">Liked Outfit</a></li>
+                <li><a href="/wardrobe">My Wardrobe</a></li>
+            </ul>
+            <!-- Mobile Menu Toggle -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 DressEase Virtual Wardrobe</p>
+    </footer>
+
+    <!-- Minimal script for responsive nav -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
