@@ -48,7 +48,7 @@ DressEase is an AI-powered wardrobe management system that automatically generat
 | Languages | Python, JavaScript, HTML, CSS |
 | Backend | Flask, TensorFlow, OpenCV, Scikit-learn |
 | Libraries | NumPy, Pillow, Scikit-learn |
-| Tools | VS Code, Git & GitHub, Kaggle |
+| Tools | VS Code, Git & GitHub, Kaggle , Antigravity |
 
 ---
 
