@@ -1,182 +1,130 @@
-
 <p align="center">
-  <img src="./img.png" alt="Project Banner" width="100%">
+  <img src="./img.png" alt="DressEase Banner" width="100%">
 </p>
 
-# [DRESSEASE] 🎯
+<h1 align="center">DRESSEASE 🎯</h1>
+<p align="center"><em>Your AI-powered wardrobe & styling companion</em></p>
 
-## Basic Details
+<p align="center">
+  <a href="https://dressease-production.up.railway.app">🔗 Live Demo</a>
+</p>
 
-### Team Name: [ByteX]
+---
 
-### Team Members
-- Member 1: [Akshara Arun] - [College of engineering Thalassery]
-- Member 2: [Devapriya R P] - [College of engineering Thalassery]
+## 👥 Team ByteX
 
-### Hosted Project Link
-[https://dressease-production.up.railway.app]
+| Member | College | Role |
+|--------|---------|------|
+| Akshara Arun | College of Engineering Thalassery | Frontend Development, API Integration |
+| Devapriya R P | College of Engineering Thalassery | Backend Development, Database Design |
 
-### Project Description
-[An AI powered wardrobe and styling companion that helps us suggest outfits from our actual wardrobe. Automatically pairs outfits based on clothing types, color, mood and occasion and also based on calendar events. ]
+---
 
-### The Problem statement
-[Choosing the right outfit daily can be time consuming and confusing. Many people struggle to utilize their full wardrobe efficiently and often end up repeating same combinations. There is a need for intelligent system that can analyze available clothing items and automatically suggests well coordinated outfits. We often by new clothes knowing if they'll match anything we already own,]
+## 📌 About the Project
+
+### The Problem
+Choosing the right outfit daily is time-consuming and frustrating. People struggle to fully utilise their wardrobe, often repeating the same combinations — and buy new clothes without knowing if they'll match anything they already own.
 
 ### The Solution
-[An AI-powered wardrobe management and styling companion that automatically generates coordinated outfits from the user's digital wardrobe. By analyzing clothing type, color compatibility, mood, occasion, and calendar events, the system ensures appropriate and stylish outfit combinations. Users can select or upload garments, and the AI dynamically matches them using predefined pairing rules and color harmony logic, making outfit planning faster, smarter, and more efficient.]
+DressEase is an AI-powered wardrobe management system that automatically generates coordinated outfits from your digital wardrobe. It analyses clothing type, color compatibility, mood, occasion, and calendar events to suggest stylish, appropriate combinations — making outfit planning faster and smarter.
 
 ---
 
-## Technical Details
+## ✨ Features
 
-### Technologies/Components Used
-
-**For Software:**
-- Languages used: [e.g., JavaScript, Python, html, CSS]
-- Frameworks used: [e.g., Flask, TensorFlow, OpenCV & Scikit-learn, html, CSS, JavaScript]
-- Libraries used: [e.g., Flask, TensorFlow, OpenCV, NumPy, Scikit-learn, Pillow ]
-- Tools used: [e.g., VS Code, Git & GitHub, Python interpreter, PowerShell, Web Browser, Kaggle]
-
----
-
-## Features
-
-List the key features of your project:
-- Feature 1: [AI suggested outfit generator]
-- Feature 2: [Image based match finder]
-- Feature 3: [Suggest outfits based on calendar events ]
-- Feature 4: [Allows users to upload new clothes and automatically updates the wardrobe with all items displayed dynamically]
-- Feature 5: [Multi-page navigation system]
-- Feature 6: [Color combination engine]
+- **AI Outfit Generator** — Suggests outfits based on mood and occasion
+- **Image-Based Match Finder** — Find matching pieces for any selected garment
+- **Calendar Integration** — Outfit recommendations based on upcoming events
+- **Dynamic Wardrobe** — Upload new clothes and watch your wardrobe update automatically
+- **Color Combination Engine** — Smart color harmony logic for well-coordinated looks
+- **Multi-page Navigation** — Clean, intuitive interface
 
 ---
 
-## Implementation
+## 🛠️ Tech Stack
 
-### For Software:
+| Category | Technologies |
+|----------|-------------|
+| Languages | Python, JavaScript, HTML, CSS |
+| Backend | Flask, TensorFlow, OpenCV, Scikit-learn |
+| Libraries | NumPy, Pillow, Scikit-learn |
+| Tools | VS Code, Git & GitHub, Kaggle |
 
-#### Installation
+---
+
+## 🚀 Getting Started
+
+### Installation
+
 ```bash
-python -m venv venv, pip install flask tensorflow opencv-python numpy pillow scikit-learn
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install flask tensorflow opencv-python numpy pillow scikit-learn
 ```
 
-#### Run
+### Run
+
 ```bash
-cd dressease python app.py
+cd dressease
+python app.py
 ```
 
 ---
 
-## Project Documentation
+## 🏗️ Architecture
 
-### For Software:
+The app follows a client–server architecture. The **frontend** (HTML, CSS, JavaScript) handles user interaction, while the **Flask backend** processes requests and runs the AI matching logic.
 
-#### Screenshots (Add at least 3)
+The system loads wardrobe images, detects clothing type and color, applies pairing and color rules, and returns outfit suggestions. The calendar module maps events to styling preferences for event-based recommendations.
 
-<p align="center">
-  <img src="./p1.png" alt="Project Banner" width="100%">
-</p>
-AI suggests outfits based on mood and occasion.
-
-<p align="center">
-  <img src="./p3.png" alt="Project Banner" width="100%">
-</p>
-Find matching pair for selected outfit.
-
-<p align="center">
-  <img src="./p4.png" alt="Project Banner" width="100%">
-</p>
-Calendar outlook
-
-<p align="center">
-  <img src="./p5.png" alt="Project Banner" width="100%">
-</p>
-calender panned outfit based on event.
-
-<p align="center">
-  <img src="./p6.png" alt="Project Banner" width="100%">
-</p>
-Liked outfit
-
-<p align="center">
-  <img src="./p7.png" alt="Project Banner" width="100%">
-</p>
-Virtual wardrobe.
-#### Diagrams
-
-**System Architecture:**
-
-![Architecture Diagram](architecture.png)
-The AI-Powered Wardrobe Assistant follows a simple client–server architecture. The frontend (HTML, CSS, JavaScript) handles user interaction, while the backend (Flask in Python) processes requests and runs the AI matching logic.
-The system loads wardrobe images, detects clothing type and color, applies pairing and color rules, and returns suitable outfit suggestions. The calendar module maps events to styling preferences and generates event-based outfit recommendations.
-
-**Application Workflow:**
+### Workflow
 
 ![Workflow](flowchart.png)
-*This workflow illustrates the functioning of the AI Wardrobe web application.
-The user begins by logging in or signing up. After accessing the dashboard, the user can either upload wardrobe items or generate an outfit based on mood and occasion. Uploaded items are categorized and stored in the database. During outfit generation, the system filters wardrobe items based on predefined rules and selects matching combinations. The suggested outfit can be saved or edited, then stored in the database and optionally assigned to a calendar date. The process ends when the user logs out.
----
+
+1. User logs in → accesses dashboard
+2. Upload wardrobe items → auto-categorised and stored
+3. Generate outfit → filtered by mood, occasion, or calendar event
+4. Save or edit the suggestion → optionally assign to a calendar date
 
 ---
 
----
+## 📸 Screenshots
 
-## Project Demo
-
-### Video
-[https://drive.google.com/drive/folders/1QrvhDS9hYXEq9oieU8V9TkYXDmN8nGXm?usp=sharing.]
-
-*Explain what the video demonstrates - key features, user flow, technical highlights*
-
-## AI Tools Used (Optional - For Transparency Bonus)
-
-If you used AI tools during development, document them here for transparency:
-
-**Tool Used:** [e.g., GitHub Copilot, v0.dev, Cursor, ChatGPT, Claude]
-
-**Purpose:** [What you used it for]
-- Example: "Generated boilerplate React components"
-- Example: "Debugging assistance for async functions"
-- Example: "Code review and optimization suggestions
-
-
-"
-
-**Key Prompts Used:**
-- "Create a REST API endpoint for user authentication"
-- "Debug this async function that's causing race conditions"
-- "Optimize this database query for better performance"
-
-**Percentage of AI-generated code:** [Approximately X%]
-
-**Human Contributions:**
-- Architecture design and planning
-- Custom business logic implementation
-- Integration and testing
-- UI/UX design decisions
-
-*Note: Proper documentation of AI usage demonstrates transparency and earns bonus points in evaluation!*
+<p align="center"><img src="./p1.png" width="100%"><br><em>AI outfit suggestions by mood & occasion</em></p>
+<p align="center"><img src="./p3.png" width="100%"><br><em>Image-based match finder</em></p>
+<p align="center"><img src="./p4.png" width="100%"><br><em>Calendar view</em></p>
+<p align="center"><img src="./p5.png" width="100%"><br><em>Calendar-planned outfit based on event</em></p>
+<p align="center"><img src="./p6.png" width="100%"><br><em>Liked outfits</em></p>
+<p align="center"><img src="./p7.png" width="100%"><br><em>Virtual wardrobe</em></p>
 
 ---
 
-## Team Contributions
+## 🎬 Demo
 
-- [Name 1]: [Specific contributions - e.g., Frontend development, API integration, etc.]
-- [Name 2]: [Specific contributions - e.g., Backend development, Database design, etc.]
-- [Name 3]: [Specific contributions - e.g., UI/UX design, Testing, Documentation, etc.]
+[📹 Watch the demo video](https://drive.google.com/drive/folders/1QrvhDS9hYXEq9oieU8V9TkYXDmN8nGXm?usp=sharing)
 
 ---
 
-## License
+## 🤖 AI Tools Used
 
-This project is licensed under the [LICENSE_NAME] License - see the [LICENSE](LICENSE) file for details.
+| Tool | Purpose |
+|------|---------|
+| GitHub Copilot | Boilerplate generation, code completion |
+| Antigravity | Debugging async functions, code navigation |
+| v0.dev | UI component scaffolding |
+| ChatGPT / Claude | Code review, optimisation, debugging assistance |
 
-**Common License Options:**
-- MIT License (Permissive, widely used)
-- Apache 2.0 (Permissive with patent grant)
-- GPL v3 (Copyleft, requires derivative works to be open source)
+**~50% of code was AI-generated.** Human contributions include architecture design, custom business logic, integration, testing, and all UI/UX decisions.
 
 ---
 
-Made with ❤️ at TinkerHub
+## 📄 License
 
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+<p align="center">Made with ❤️ at TinkerHub</p>
