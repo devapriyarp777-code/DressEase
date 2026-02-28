@@ -14,7 +14,7 @@
 - Member 2: [Devapriya R P] - [College of engineering Thalassery]
 
 ### Hosted Project Link
-[mention your project hosted link here]
+[https://dressease-production.up.railway.app]
 
 ### Project Description
 [An AI powered wardrobe and styling companion that helps us suggest outfits from our actual wardrobe. Automatically pairs outfits based on clothing types, color, mood and occasion and also based on calendar events. ]
@@ -57,12 +57,12 @@ List the key features of your project:
 
 #### Installation
 ```bash
-[Installation commands - python -m venv venv, pip install flask tensorflow opencv-python numpy pillow scikit-learn]
+python -m venv venv, pip install flask tensorflow opencv-python numpy pillow scikit-learn
 ```
 
 #### Run
 ```bash
-[Run commands - cd dressease python app.py]
+cd dressease python app.py
 ```
 
 ---
@@ -74,78 +74,50 @@ List the key features of your project:
 #### Screenshots (Add at least 3)
 
 <p align="center">
-  <img src="./img.png" alt="Project Banner" width="100%">
+  <img src="./p1.png" alt="Project Banner" width="100%">
 </p>
+AI suggests outfits based on mood and occasion.
 
-*Add caption explaining what this shows*
+<p align="center">
+  <img src="./p3.png" alt="Project Banner" width="100%">
+</p>
+Find matching pair for selected outfit.
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+<p align="center">
+  <img src="./p4.png" alt="Project Banner" width="100%">
+</p>
+Calendar outlook
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+<p align="center">
+  <img src="./p5.png" alt="Project Banner" width="100%">
+</p>
+calender panned outfit based on event.
 
+<p align="center">
+  <img src="./p6.png" alt="Project Banner" width="100%">
+</p>
+Liked outfit
+
+<p align="center">
+  <img src="./p7.png" alt="Project Banner" width="100%">
+</p>
+Virtual wardrobe.
 #### Diagrams
 
 **System Architecture:**
 
-![Architecture Diagram](docs/architecture.png)
-*Explain your system architecture - components, data flow, tech stack interaction*
+![Architecture Diagram](architecture.png)
+The AI-Powered Wardrobe Assistant follows a simple client–server architecture. The frontend (HTML, CSS, JavaScript) handles user interaction, while the backend (Flask in Python) processes requests and runs the AI matching logic.
+The system loads wardrobe images, detects clothing type and color, applies pairing and color rules, and returns suitable outfit suggestions. The calendar module maps events to styling preferences and generates event-based outfit recommendations.
 
 **Application Workflow:**
 
-![Workflow](docs/workflow.png)
-*Add caption explaining your workflow*
-
+![Workflow](flowchart.png)
+*This workflow illustrates the functioning of the AI Wardrobe web application.
+The user begins by logging in or signing up. After accessing the dashboard, the user can either upload wardrobe items or generate an outfit based on mood and occasion. Uploaded items are categorized and stored in the database. During outfit generation, the system filters wardrobe items based on predefined rules and selects matching combinations. The suggested outfit can be saved or edited, then stored in the database and optionally assigned to a calendar date. The process ends when the user logs out.
 ---
 
 ---
-
-## Additional Documentation
-
-### For Web Projects with Backend:
-
-#### API Documentation
-
-**Base URL:** `https://api.yourproject.com`
-
-##### Endpoints
-
-**GET /api/endpoint**
-- **Description:** [What it does]
-- **Parameters:**
-  - `param1` (string): [Description]
-  - `param2` (integer): [Description]
-- **Response:**
-```json
-{
-  "status": "success",
-  "data": {}
-}
-```
-
-**POST /api/endpoint**
-- **Description:** [What it does]
-- **Request Body:**
-```json
-{
-  "field1": "value1",
-  "field2": "value2"
-}
-```
-- **Response:**
-```json
-{
-  "status": "success",
-  "message": "Operation completed"
-}
-```
-
-[Add more endpoints as needed...]
-
----
-
-
 
 ---
 
